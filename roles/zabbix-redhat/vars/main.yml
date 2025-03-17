@@ -1,2 +1,5 @@
+# zabbix agent configuration file path, default: /etc/zabbix/zabbix_agentd.conf
 zabbix_agent_conf_path: /etc/zabbix/zabbix_agentd.conf
+
+# zabbix agent rpm file name, default: none
 zabbix_agent_rpm: zabbix-agent-7.0.10-release1.el9.x86_64.rpm
