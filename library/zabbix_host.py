@@ -62,8 +62,6 @@ def get_group_id(zabbix_server_api_url, zabbix_host_type, auth_token):
         result = response.json()
         if 'result' in result:
             return result['result'][0]['groupid']
-            # raise ValueError(result['result'])
-            # raise ValueError(type_string)
         else:
             raise ValueError("Failed to get auth token: {}".format(result.get('error', 'Unknown error')))
     else:
