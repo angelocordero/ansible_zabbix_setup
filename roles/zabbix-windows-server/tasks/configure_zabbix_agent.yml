@@ -1,0 +1,44 @@
+---
+- name: Copy zabbix-agent msi file to the host
+  win_copy:
+    src: files/{{ zabbix_agent_msi }}
+    dest: C:\Windows\Temp\{{ zabbix_agent_msi }}
+
+- name: Install zabbix-agent
+  win_package:
+    path: C:\Windows\Temp\{{ zabbix_agent_msi }}
+    arguments: /qn SERVER=127.0.0.1
+    state: present
+
+- name: Remove current configuration
+  win_lineinfile:
+    path: "{{ zabbix_agent_conf_path }}"
+    regexp: "{{ item }}"
+    state: absent
+  loop:
+    - ^(Server=.*)$
+    - ^(ServerActive=.*)$
+    - ^(Hostname=.*)$
+
+- name: Append configuration lines
+  win_lineinfile:
+    path: "{{ zabbix_agent_conf_path }}"
+    line: "{{ item }}"
+    insertafter: EOF
+    create: yes
+  loop:
+    - "Server={{ zabbix_server_ip }}"
+    - "ServerActive={{ zabbix_server_ip }}"
+    - "Hostname={{ ansible_hostname }}"
+  notify:
+    - restart zabbix-agent
+
+- name: Enable TCP connection to port {{ zabbix_agent_port }} in Windows firewall
+  community.windows.win_firewall_rule:
+    name: "Allow TCP {{ zabbix_agent_port }}"
+    enable: yes
+    direction: in
+    action: allow
+    protocol: tcp
+    localport: "{{ zabbix_agent_port }}"
+    state: present

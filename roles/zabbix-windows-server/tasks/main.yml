@@ -1,0 +1,3 @@
+---
+- include_tasks: configure_zabbix_agent.yml
+- include_tasks: add_zabbix_host.yml

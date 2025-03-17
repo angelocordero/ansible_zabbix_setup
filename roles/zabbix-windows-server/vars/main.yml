@@ -1,0 +1,2 @@
+zabbix_agent_conf_path: C:\Program Files\Zabbix Agent\zabbix_agentd.conf
+zabbix_agent_msi: zabbix_agent-7.0.10-windows-amd64-openssl.msi

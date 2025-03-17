@@ -1,0 +1,16 @@
+---
+- name: Set facts
+  set_fact:
+    zabbix_host_name: "{{ ansible_hostname }}"
+    zabbix_host_ip: "{{ ansible_host }}"
+    zabbix_host_type: "Windows Server"
+
+- name: Add host to zabbix server
+  local_action:
+    module: zabbix_host
+    zabbix_server_api_url: "{{ zabbix_server_api_url }}"
+    zabbix_server_user: "{{ zabbix_server_user }}"
+    zabbix_server_password: "{{ zabbix_server_password }}"
+    zabbix_host_name: "{{ zabbix_host_name }}"
+    zabbix_host_ip: "{{ zabbix_host_ip }}"
+    zabbix_host_type: "{{ zabbix_host_type }}"
