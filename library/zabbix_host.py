@@ -136,7 +136,7 @@ def add_host_to_zabbix(zabbix_server_api_url, zabbix_host_name, zabbix_host_ip, 
         }
     }
 
-    interface = interfaces_map.get(type, interfaces_map['Default'])
+    interface = interfaces_map.get(zabbix_host_type, interfaces_map['Default'])
 
     payload = {
         "jsonrpc": "2.0",

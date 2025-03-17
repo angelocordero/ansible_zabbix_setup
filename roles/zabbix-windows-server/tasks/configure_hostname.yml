@@ -1,0 +1,7 @@
+- name: Configure hostname
+  win_hostname: 
+    name: "{{ inventory_hostname }}"
+  register: output
+  changed_when: output.reboot_required
+  notify:
+    - Reboot

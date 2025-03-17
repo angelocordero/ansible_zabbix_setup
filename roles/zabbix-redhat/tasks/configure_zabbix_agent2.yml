@@ -1,0 +1,52 @@
+---
+- name: Check if zabbix-agent2 is already installed
+  shell: rpm -q zabbix-agent2
+  register: check_output
+  failed_when: false
+  changed_when: false 
+
+- name: Install zabbix-agent2
+  when: check_output.stdout == 'package zabbix-agent2 is not installed'
+  block: 
+    - name: Copy Zabbix-Agent rpm file to the host
+      copy:
+        src: files/{{ zabbix_agent2_rpm }}
+        dest: /tmp/{{ zabbix_agent2_rpm }}
+        mode: '0644'
+
+    - name: Install the rpm file
+      shell: rpm -ivh /tmp/{{ zabbix_agent2_rpm }}
+
+    - name: Verify the installation
+      shell: rpm -q zabbix-agent2
+      register: verify_output
+      failed_when: verify_output.stdout == 'package zabbix-agent2 is not installed'
+      changed_when: false
+
+- name: Remove current configuration
+  lineinfile:
+    path: "{{ zabbix_agent2_conf_path }}"
+    regexp: "{{ item }}"
+    state: absent
+  loop:
+    - ^(Server=.*)$
+    - ^(ServerActive=.*)$
+    - ^(Hostname=.*)$
+
+- name: Configure zabbix-agent2
+  blockinfile:
+    path: "{{ zabbix_agent2_conf_path }}"
+    block: |
+      Server={{ zabbix_server_ip }}
+      ServerActive={{ zabbix_server_ip }}
+      Hostname={{ ansible_hostname }}
+    marker: "# {mark} ANSIBLE MANAGED BLOCK"
+  notify:
+    - restart zabbix-agent2
+
+- name: Enable TCP connection to port {{ zabbix_agent_port }} in firewalld
+  firewalld:
+    port: "{{ zabbix_agent_port }}/tcp"
+    permanent: yes
+    state: enabled
+    immediate: yes

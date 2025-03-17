@@ -4,9 +4,11 @@
   gather_facts: yes
   roles:
     - zabbix-windows-server
+    - zabbix-host
 
-- name: Install zabbix-agent to redhat hosts
-  hosts: redhat
-  gather_facts: yes
-  roles:
-    - zabbix-redhat
+# - name: Install zabbix-agent to redhat hosts
+#   hosts: redhat
+#   gather_facts: yes
+#   roles:
+#     - zabbix-redhat
+#     - zabbix-host

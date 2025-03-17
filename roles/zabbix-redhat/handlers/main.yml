@@ -3,3 +3,9 @@
     name: zabbix-agent
     enabled: yes
     state: restarted
+
+- name: restart zabbix-agent2
+  systemd_service:
+    name: zabbix-agent2
+    enabled: yes
+    state: restarted

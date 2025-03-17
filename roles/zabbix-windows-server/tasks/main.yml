@@ -1,3 +1,15 @@
 ---
+- name: Set facts
+  set_fact:
+    zabbix_host_name: "{{ inventory_hostname if configure_hostname else ansible_hostname }}"
+    zabbix_host_ip: "{{ ansible_host }}"
+    zabbix_host_type: "Windows Server"
+
+- include_tasks: configure_hostname.yml
+  when: configure_hostname
+
 - include_tasks: configure_zabbix_agent.yml
-- include_tasks: add_zabbix_host.yml
+  when: not install_zabbix_agent_v2
+
+- include_tasks: configure_zabbix_agent2.yml
+  when: install_zabbix_agent_v2

@@ -3,3 +3,13 @@
     name: Zabbix Agent
     start_mode: auto
     state: restarted
+
+- name: restart zabbix-agent2
+  win_service:
+    name: Zabbix Agent2
+    start_mode: auto
+    state: restarted
+
+- name: Reboot
+  win_reboot:
+    msg: "Rebooting to apply hostname changes"

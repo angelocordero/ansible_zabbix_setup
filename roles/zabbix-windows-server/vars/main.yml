@@ -1,7 +1,11 @@
 # zabbix agent configuration file path, default: C:\Program Files\Zabbix Agent\zabbix_agentd.conf
 zabbix_agent_conf_path: C:\Program Files\Zabbix Agent\zabbix_agentd.conf
 
+# zabbix agent2 configuration file path, default: C:\Program Files\Zabbix Agent\zabbix_agentd.conf
+zabbix_agent2_conf_path: C:\Program Files\Zabbix Agent 2\zabbix_agent2.conf
+
 # zabbix agent rpm file name, default: none
 zabbix_agent_msi: zabbix_agent-7.0.10-windows-amd64-openssl.msi
 
-
+# zabbix agent2 rpm file name, default: none
+zabbix_agent2_msi: zabbix_agent2-7.0.10-windows-amd64-openssl.msi
