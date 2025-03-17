@@ -29,7 +29,7 @@ Ansible playbook to setup zabbix agents / SNMP on hosts and add them to the serv
     ansible_winrm_transport=ntlm
     ```
 
-3. Download relevant RPM and MSI Zabbix agent files and place them in their respective roles' files folder
+3. Acquire the appropriate RPM and MSI Zabbix agent files, and store them in the designated "files" directories for their respective roles
 
     ```
     roles
@@ -42,7 +42,7 @@ Ansible playbook to setup zabbix agents / SNMP on hosts and add them to the serv
               |--- <put msi file here>
     ```
 
-4. Double check all variables in the following files
+4. Verify all variables thoroughly in the specified files
     - `group_vars/all`
     - `roles/zabbix-redhat/vars/main.yml`
     - `roles/zabbix-windows/vars/main.yml`
