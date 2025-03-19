@@ -1,0 +1,53 @@
+
+# zabbix server ip, default: 127.0.0.1
+zabbix_server_ip: 127.0.0.1
+
+# zabbix agent port, default: 10050
+zabbix_agent_port: 10050
+
+# zabbix server user, default: Admin
+zabbix_server_user: Admin
+
+# zabbix server password, default: zabbix
+zabbix_server_password: zabbix
+
+# zabbix server api url, default: http://localhost/zabbix/api_jsonrpc.php
+zabbix_server_api_url: http://localhost/zabbix/api_jsonrpc.php
+
+# whether to configure host to use inventory hostname, default: false
+configure_hostname: true
+
+# hostname of the host being configured
+zabbix_host_name: "{{ inventory_hostname if configure_hostname else ansible_hostname }}"
+
+# ip of the host being configured
+zabbix_host_ip: "{{ ansible_host }}"
+
+# whether to install zabbix agent v2, default: false
+install_zabbix_agent_v2: false
+
+# whether to use snmp v2c or snmp v3, default: false
+use_snmp_v3: false
+
+# zabbix snmp port, default: 161
+zabbix_snmp_port: 161
+
+# SNMP v2 community String
+snmp_v2_community_string: changeme
+
+# SNMP v3 security name
+snmp_v3_security_name: changeme
+
+# SNMP v3 authentication protocol, default: 0
+# valid values: [ 0 = MD5, 1 = SHA1, 2 = SHA224, 3 = SHA256, 4 = SHA384, 5 = SHA512 ]
+snmp_v3_auth_protocol: 0
+
+# SNMP v3 auth pass phraase
+snmp_v3_auth_passphrase: changeme
+
+# SNMP v3 privacy protocol, default: 0
+# valid values: [ 0 = DES, 21= AES128, 2 = AES192, 3 = AES256, 4 = AES192C, 5 = AES256C]
+snmp_v3_priv_protocol: 0
+
+# SNMP v3 priv pass phrase
+snmp_v3_priv_passphrase: changeme

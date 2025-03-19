@@ -1,14 +1,20 @@
 ---
-- name: Install zabbix-agent to windows servers
+- name: Configure and monitor windows servers using zabbix agent
   hosts: windows_servers
   gather_facts: yes
   roles:
     - zabbix-windows-server
     - zabbix-host
 
-# - name: Install zabbix-agent to redhat hosts
-#   hosts: redhat
-#   gather_facts: yes
-#   roles:
-#     - zabbix-redhat
-#     - zabbix-host
+- name: Configure and monitor redhat hosts using zabbix agent
+  hosts: redhat
+  gather_facts: yes
+  roles:
+    - zabbix-redhat
+    - zabbix-host
+
+- name: Add SNMP devices to zabbix
+  hosts: snmp
+  gather_facts: no
+  roles:
+    - zabbix-host

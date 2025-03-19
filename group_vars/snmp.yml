@@ -1,0 +1,3 @@
+    zabbix_interface_type: 2
+    zabbix_host_name: "{{ inventory_hostname }}"
+    zabbix_host_type: SNMP

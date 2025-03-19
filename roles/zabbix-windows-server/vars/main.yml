@@ -1,3 +1,6 @@
+# type identifier of the host, value: Windows Server
+zabbix_host_type: "Windows Server"
+
 # zabbix agent configuration file path, default: C:\Program Files\Zabbix Agent\zabbix_agentd.conf
 zabbix_agent_conf_path: C:\Program Files\Zabbix Agent\zabbix_agentd.conf
 
@@ -9,3 +12,7 @@ zabbix_agent_msi: zabbix_agent-7.0.10-windows-amd64-openssl.msi
 
 # zabbix agent2 rpm file name, default: none
 zabbix_agent2_msi: zabbix_agent2-7.0.10-windows-amd64-openssl.msi
+
+# what zabbix interface type to use, value: 1
+# valid values: [ 1 = Agent, 2 = SNMP ]
+zabbix_interface_type: 1

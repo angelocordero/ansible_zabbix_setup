@@ -7,21 +7,25 @@ Ansible playbook to setup zabbix agents / SNMP on hosts and add them to the serv
 2. Create an `inventory` file, example:
     ```
     [redhat]
-    192.168.100.50 
+    alma-01 ansible_host=192.168.100.50
+    alma-02 ansible_host=192.168.100.51
+
+    [windows_servers]
+    windows-test ansible_host=192.168.100.60
+
+    [snmp]
+    cisco-switch ansible_host=102.168.100.70
 
     [redhat:vars]
     ansible_user=ansible
-    ansible_password=changeme
+    ansible_password=cordero12
     ansible_become=true
     ansible_become_user=root
-    ansible_become_password=changeme
-
-    [windows_servers]
-    192.168.100.60
+    ansible_become_password=cordero12
 
     [windows_servers:vars]
     ansible_user=ansible
-    ansible_password=changeme
+    ansible_password=cordero12!
     ansible_connection=winrm
     ansible_port=5985
     ansible_winrm_scheme=http
@@ -43,7 +47,8 @@ Ansible playbook to setup zabbix agents / SNMP on hosts and add them to the serv
     ```
 
 4. Verify all variables thoroughly in the specified files
-    - `group_vars/all`
+    - `group_vars/all.yml`
+    - `group_vars/snmp.yml`
     - `roles/zabbix-redhat/vars/main.yml`
     - `roles/zabbix-windows/vars/main.yml`
 

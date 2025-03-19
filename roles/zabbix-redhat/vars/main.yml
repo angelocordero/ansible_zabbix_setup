@@ -1,3 +1,6 @@
+# type identifier of the host, value: RHEL
+zabbix_host_type: "RHEL"
+
 # zabbix agent configuration file path, default: /etc/zabbix/zabbix_agentd.conf
 zabbix_agent_conf_path: /etc/zabbix/zabbix_agentd.conf
 
@@ -9,3 +12,7 @@ zabbix_agent_rpm: zabbix-agent-7.0.10-release1.el9.x86_64.rpm
 
 # zabbix agent rpm file name, default: none
 zabbix_agent2_rpm: zabbix-agent2-7.0.10-release1.el9.x86_64.rpm
+
+# what zabbix interface type to use, value: 1
+# valid values: [ 1 = Agent, 2 = SNMP ]
+zabbix_interface_type: 1
