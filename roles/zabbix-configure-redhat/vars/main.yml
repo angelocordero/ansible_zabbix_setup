@@ -10,7 +10,7 @@ zabbix_agent2_conf_path: /etc/zabbix/zabbix_agent2.conf
 # zabbix agent rpm file name, default: none
 zabbix_agent_rpm: zabbix-agent-7.0.10-release1.el9.x86_64.rpm
 
-# zabbix agent rpm file name, default: none
+# zabbix agent2 rpm file name, default: none
 zabbix_agent2_rpm: zabbix-agent2-7.0.10-release1.el9.x86_64.rpm
 
 # what zabbix interface type to use, value: 1

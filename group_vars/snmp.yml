@@ -1,3 +1,8 @@
-    zabbix_interface_type: 2
-    zabbix_host_name: "{{ inventory_hostname }}"
-    zabbix_host_type: SNMP
+# zabbix interface type for API, value: 2, do not change
+zabbix_interface_type: 2
+
+# hostname of snmp devices
+zabbix_host_name: "{{ inventory_hostname }}"
+
+# type identifier 
+zabbix_host_type: SNMP
