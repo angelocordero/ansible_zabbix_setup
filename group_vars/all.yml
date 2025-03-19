@@ -1,6 +1,6 @@
 
 # zabbix server ip, default: 127.0.0.1
-zabbix_server_ip: 127.0.0.1
+zabbix_server_ip: 192.168.100.100
 
 # zabbix agent port, default: 10050
 zabbix_agent_port: 10050

@@ -33,7 +33,7 @@ def get_zabbix_auth_token(zabbix_server_api_url, zabbix_server_user, zabbix_serv
 def get_group_id(zabbix_server_api_url, zabbix_host_type, auth_token):
     type_map = {
         'RHEL': 'Linux Devices',
-        'Windows Server': 'Windows Devices',
+        'Windows': 'Windows Devices',
         'Cisco': 'Cisco Network Device',
         'SNMP': 'SNMP Devices'
     }
@@ -71,8 +71,7 @@ def get_group_id(zabbix_server_api_url, zabbix_host_type, auth_token):
 def get_template_id(zabbix_server_api_url, zabbix_host_type, auth_token):
     template_map = {
         'RHEL': 'Linux by Zabbix agent',
-        'Windows Server': 'Windows by Zabbix agent',
-        'Cisco': 'Cisco IOS by Angelo'
+        'Windows': 'Windows by Zabbix agent',
     }
 
     template_name = template_map.get(zabbix_host_type, '')

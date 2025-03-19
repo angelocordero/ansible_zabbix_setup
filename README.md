@@ -10,7 +10,7 @@ Ansible playbook to setup zabbix agents / SNMP on hosts and add them to the serv
     alma-01 ansible_host=192.168.100.50
     alma-02 ansible_host=192.168.100.51
 
-    [windows_servers]
+    [windows]
     windows-test ansible_host=192.168.100.60
 
     [snmp]
@@ -23,7 +23,7 @@ Ansible playbook to setup zabbix agents / SNMP on hosts and add them to the serv
     ansible_become_user=root
     ansible_become_password=changeme
 
-    [windows_servers:vars]
+    [windows:vars]
     ansible_user=ansible
     ansible_password=changeme
     ansible_connection=winrm
@@ -51,6 +51,21 @@ Ansible playbook to setup zabbix agents / SNMP on hosts and add them to the serv
     - `group_vars/snmp.yml`
     - `roles/zabbix-redhat/vars/main.yml`
     - `roles/zabbix-windows/vars/main.yml`
+
+## Roles
+#### This Ansible playbook is structured with the following components:
+
+- Zabbix agent configuration roles:
+    - `zabbix-configure-redhat`
+    - `zabbix-configure-windows`
+
+- Playbook to add hosts to the server
+    - `add-host-to-zabbix-server` (supports Zabbix Agent and SNMP monitoring)
+
+#### Use cases:
+
+- If Zabbix Agents require configuration, apply the relevant `zabbix-configure-* role`
+- if Zabbix Agents are already configured, just use the `add-host-to-zabbix-server role to add the hosts to the Zabbix server
 
 ## Versions
 This playbook was written and tested on: 

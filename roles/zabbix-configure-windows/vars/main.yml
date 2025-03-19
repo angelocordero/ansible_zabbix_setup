@@ -1,5 +1,5 @@
-# type identifier of the host, value: Windows Server
-zabbix_host_type: "Windows Server"
+# type identifier of the host, value: Windows
+zabbix_host_type: "Windows"
 
 # zabbix agent configuration file path, default: C:\Program Files\Zabbix Agent\zabbix_agentd.conf
 zabbix_agent_conf_path: C:\Program Files\Zabbix Agent\zabbix_agentd.conf

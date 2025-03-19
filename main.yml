@@ -1,20 +1,20 @@
 ---
-- name: Configure and monitor windows servers using zabbix agent
-  hosts: windows_servers
+- name: Configure and monitor windows using zabbix agent
+  hosts: windows
   gather_facts: yes
   roles:
-    - zabbix-windows-server
-    - zabbix-host
+    - zabbix-configure-windows
+    - add-host-to-zabbix-server
 
 - name: Configure and monitor redhat hosts using zabbix agent
   hosts: redhat
   gather_facts: yes
   roles:
-    - zabbix-redhat
-    - zabbix-host
+    - zabbix-configure-redhat
+    - add-host-to-zabbix-server
 
 - name: Add SNMP devices to zabbix
   hosts: snmp
   gather_facts: no
   roles:
-    - zabbix-host
+    - add-host-to-zabbix-server
