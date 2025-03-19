@@ -18,14 +18,14 @@ Ansible playbook to setup zabbix agents / SNMP on hosts and add them to the serv
 
     [redhat:vars]
     ansible_user=ansible
-    ansible_password=cordero12
+    ansible_password=changeme
     ansible_become=true
     ansible_become_user=root
-    ansible_become_password=cordero12
+    ansible_become_password=changeme
 
     [windows_servers:vars]
     ansible_user=ansible
-    ansible_password=cordero12!
+    ansible_password=changeme
     ansible_connection=winrm
     ansible_port=5985
     ansible_winrm_scheme=http
